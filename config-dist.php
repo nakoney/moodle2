@@ -45,6 +45,13 @@ $CFG->dbname    = 'moodle';     // database name, eg moodle
 $CFG->dbuser    = 'username';   // your database username
 $CFG->dbpass    = 'password';   // your database password
 $CFG->prefix    = 'mdl_';       // prefix to use for all table names
+$CFG->debug = E_ALL;
+$CFG->debugdisplay = 1;
+$CFG->langstringcache = 0;
+$CFG->cachetemplates = 0;
+$CFG->cachejs = 0;
+$CFG->perfdebug = 15;
+$CFG->debugpageinfo = 1;
 $CFG->dboptions = array(
     'dbpersist' => false,       // should persistent database connections be
                                 //  used? set to 'false' for the most stable
