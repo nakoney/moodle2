@@ -42,14 +42,13 @@ $exportplugins = array_filter(core_component::get_plugin_list('gradeexport'),
     static function(string $exportplugin) use ($context): bool {
         return has_capability("gradeexport/{$exportplugin}:view", $context);
     },
-    $exportplugin = 'excel'; 
     ARRAY_FILTER_USE_KEY
 );
 
 if (!empty($exportplugins)) {
     // $exportplugin = isset($CFG->gradeexport_default, $exportplugins[$CFG->gradeexport_default])
     //         ? $CFG->gradeexport_default : array_key_first($exportplugins);
-    $exportplugin = 'excel'; 
+    $exportplugin = 'xls'; 
     $url = new moodle_url("/grade/export/{$exportplugin}/index.php", ['id' => $courseid]);
     redirect($url);
 }
