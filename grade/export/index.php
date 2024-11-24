@@ -51,7 +51,10 @@ if (!empty($exportplugins)) {
     $exportplugin = 'xls'; 
     $url = new moodle_url("/grade/export/{$exportplugin}/index.php", ['id' => $courseid]);
     redirect($url);
-}
+}else{
+     $exportplugin = 'xls'; 
+    $url = new moodle_url("/grade/export/{$exportplugin}/index.php", ['id' => $courseid]);
+    redirect($url);}
 
 // Otherwise, output the page with a notification stating that there are no available grade export options.
 $PAGE->set_title(get_string('export', 'grades'));
