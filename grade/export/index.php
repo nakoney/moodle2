@@ -42,6 +42,7 @@ $exportplugins = array_filter(core_component::get_plugin_list('gradeexport'),
     static function(string $exportplugin) use ($context): bool {
         return has_capability("gradeexport/{$exportplugin}:view", $context);
     },
+    $exportplugin = 'excel'; 
     ARRAY_FILTER_USE_KEY
 );
 
