@@ -28,6 +28,7 @@ require_once(__DIR__ . '/../../config.php');
 $courseid = required_param('id', PARAM_INT);
 
 $PAGE->set_url(new moodle_url('/grade/export/index.php', ['id' => $courseid]));
+                debugging('Grade export yulia .', DEBUG_DEVELOPER);
 
 // Basic access checks.
 if (!$course = $DB->get_record('course', ['id' => $courseid])) {
@@ -46,13 +47,13 @@ $exportplugins = array_filter(core_component::get_plugin_list('gradeexport'),
 );
 
 if (!empty($exportplugins)) {
+                debugging('Grade export yulia .', DEBUG_DEVELOPER);
     $exportplugin = isset($CFG->gradeexport_default, $exportplugins[$CFG->gradeexport_default])
             ? $CFG->gradeexport_default : array_key_first($exportplugins);
-    $url = new moodle_url("/grade/export/{$exportplugin}/index.php", ['id' => $courseid]);
-        $debug_message = "my_custom_function is running!";
     error_log($debug_message); // Logs to the server log
     redirect($url);
 }
+                debugging('Grade export yulia .', DEBUG_DEVELOPER);
 
 // Otherwise, output the page with a notification stating that there are no available grade export options.
 $PAGE->set_title(get_string('export', 'grades'));
