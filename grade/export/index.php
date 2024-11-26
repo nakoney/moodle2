@@ -46,15 +46,13 @@ $exportplugins = array_filter(core_component::get_plugin_list('gradeexport'),
 );
 
 if (!empty($exportplugins)) {
-    // $exportplugin = isset($CFG->gradeexport_default, $exportplugins[$CFG->gradeexport_default])
-    //         ? $CFG->gradeexport_default : array_key_first($exportplugins);
-    $exportplugin = 'xls'; 
+    $exportplugin = isset($CFG->gradeexport_default, $exportplugins[$CFG->gradeexport_default])
+            ? $CFG->gradeexport_default : array_key_first($exportplugins);
     $url = new moodle_url("/grade/export/{$exportplugin}/index.php", ['id' => $courseid]);
+        $debug_message = "my_custom_function is running!";
+    error_log($debug_message); // Logs to the server log
     redirect($url);
-}else{
-     $exportplugin = 'xls'; 
-    $url = new moodle_url("/grade/export/{$exportplugin}/index.php", ['id' => $courseid]);
-    redirect($url);}
+}
 
 // Otherwise, output the page with a notification stating that there are no available grade export options.
 $PAGE->set_title(get_string('export', 'grades'));
